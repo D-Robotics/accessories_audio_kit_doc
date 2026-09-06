@@ -28,7 +28,7 @@ const copyrightYearLabel =
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "RDK Accessories DOC",
+  title: "RDK Audio Kit DOC",
   // tagline: 'Dinosaurs are cool',
   favicon: "img/logo.png",
   // trailingSlash: false,
