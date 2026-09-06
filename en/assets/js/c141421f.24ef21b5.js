@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkaccessories_audio_kit_doc=self.webpackChunkaccessories_audio_kit_doc||[]).push([[957],{936:e=>{e.exports=JSON.parse('{"name":"docusaurus-theme-search-algolia","id":"default"}')}}]);
