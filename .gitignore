@@ -1,0 +1,51 @@
+# Dependencies
+/node_modules
+
+# Production
+/build
+
+/en_docs
+
+# src/theme/
+
+# Generated files
+.docusaurus
+.cache-loader
+.vscode
+src/context/generated-sidebar-config.json
+
+# Misc
+.DS_Store
+.env
+.env.local
+
+# Local Pagefind artifacts (dev/temporary)
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Algolia indexing secrets / temp artifacts
+scripts/_algolia_tmp/
+
+.output.log
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+translate_doc.py
+GEMINI.md
+
+yarn.lock
+# package-lock.json
+
+.idea
+
+# Personal agent/IDE tooling — local use only, not part of the repo
+.claude/
+.cursor/
+
+# Skill migration work directory (extracted media, source models, temp artifacts)
+.migration-work/
+.doc-migration-work/
+
+.env.local

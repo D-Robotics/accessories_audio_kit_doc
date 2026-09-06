@@ -1,0 +1,10 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.docsSidebar.category.RDK 音频套件": {
+    "message": "RDK Audio Kit",
+    "description": "The label for category RDK 音频套件 in sidebar docsSidebar"
+  }
+}
