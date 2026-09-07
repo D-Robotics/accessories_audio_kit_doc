@@ -96,5 +96,5 @@ npm run serve -- --host=10.64.62.34 --port=1688 --no-open
 ```
 
 Common access paths (the port will depend on the actual `serve` output):
-- English: `http://localhost:3000/en/accessories_audio_kit_doc/en/introduction`
-- Chinese: `http://localhost:3000/accessories_audio_kit_doc/introduction`
+- English: `http://localhost:3000/en/accessories_audio_kit_doc/en/`
+- Chinese: `http://localhost:3000/accessories_audio_kit_doc/`
