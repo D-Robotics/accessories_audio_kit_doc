@@ -55,7 +55,7 @@ import TabItem from '@theme/TabItem';
 
 ## 安装与连接
 
-### 连接拓展板与麦克风阵列
+### 连接音频拓展板与麦克风阵列
 
 将同面 36PIN 0.5mm 间距的 FFC/FPC 排线的一侧接入 RDK 音频拓展板的麦克风阵列接口，另一侧接入 RDK 音频拓展板 4/6-Mic 阵列的麦克风阵列接口，排线的触点方向均朝向 PCB 板。
 
@@ -106,8 +106,8 @@ import TabItem from '@theme/TabItem';
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/connect-rdk-s600.png" alt="RDK S600 连接" width="50%" />
 
 </TabItem>
-</Tabs>
-#### 设置 USB 模式
+
+ <TabItem value="USB 模式">
 
 对于即插即用场景，也可以通过将拨码开关设置为以下状态（`0XXX`），以将 RDK 音频套件设置为 USB 模式，通过 RDK 音频拓展板上的 USB Type-C 接口连接开发板的 USB 接口，作为 `UAC`（`USB Audio Class`）协议标准音频设备接入。
 
@@ -115,4 +115,5 @@ import TabItem from '@theme/TabItem';
 
 
 
-
+</TabItem>
+</Tabs>

@@ -107,10 +107,12 @@ Use a GH1.25-14P both-ends-reversed cable to connect the audio digital interface
 
 </TabItem>
 
-</Tabs>
 
-#### Configuring USB Mode
+<TabItem value="USB Mode">
 
 For plug-and-play scenarios, you can also set the DIP switch to the following state (`0XXX`) to set the RDK Audio Kit to USB mode, and connect the development board's USB interface to the USB Type-C interface on the RDK Audio Expansion Board to use it as a standard audio device compliant with the `UAC` (`USB Audio Class`) protocol.
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/dip-switch-usb-0xxx.png" alt="USB mode DIP switch 0XXX" width="30%" />
+
+</TabItem>
+</Tabs>

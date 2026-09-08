@@ -10,7 +10,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-## 3.1 软硬件配置
+## 软硬件配置
 
 <Tabs groupId="rdk-board">
 
@@ -124,8 +124,8 @@ devmem 0x34830020 32 0x17171717
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s600-dev-snd.png" alt="RDK S600 /dev/snd 节点" width="80%" /><br/>
 
 </TabItem>
-</Tabs>
-### 切换 USB 音频模式
+
+<TabItem value="USB 模式">
 
 将拨码开关设置为以下状态（0XXX），可以将 RDK 音频套件切换到 USB 音频模式。
 
@@ -139,10 +139,12 @@ devmem 0x34830020 32 0x17171717
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/usb-dev-snd.png" alt="USB /dev/snd 节点" width="80%" /><br/>
 
+</TabItem>
+</Tabs>
 
 
 
-## 3.2 功能体验
+## 功能体验
 
 本处以 RDK X5 + RDK 音频套件为例，展示如何使用 `arecord` 工具录制多通道音频、使用 `aplay` 工具播放多声道音频、全双工录制播放。
 
@@ -223,7 +225,7 @@ arecord -D hw:0,1 -d 3 -r 16000 -f S16_LE -c 8 record.wav
 
 I2S 通道数为 1 时，播放与录制的采样率和采样格式必须一致，因为录制与播放数据通道使用相同的位时钟。
 
-## 3.3 下一步指引
+## 下一步指引
 
 至此，RDK 音频套件基本功能已体验完成。
 

@@ -10,7 +10,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-## 3.1 Hardware and Software Configuration
+## Hardware and Software Configuration
 
 <Tabs groupId="rdk-board">
 
@@ -125,9 +125,8 @@ Run `ls -l /dev/snd` to list the recording and playback nodes. `pcmC0D0c` is the
 
 </TabItem>
 
-</Tabs>
 
-### Switching to USB Audio Mode
+<TabItem value="USB Mode">
 
 Set the DIP switch to the following state (0XXX) to switch the RDK Audio Kit to USB audio mode.
 
@@ -141,7 +140,10 @@ Run `ls -l /dev/snd` to list the recording and playback nodes. `pcmC1D0c` is the
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/usb-dev-snd.png" alt="USB /dev/snd nodes" width="80%" /><br/>
 
-## 3.2 Feature Walkthrough
+</TabItem>
+</Tabs>
+
+## Feature Walkthrough
 
 This section uses the RDK X5 + RDK Audio Kit as an example to demonstrate how to record multi-channel audio with the `arecord` tool, play back multi-channel audio with the `aplay` tool, and perform full-duplex recording and playback.
 
@@ -198,6 +200,8 @@ amixer -c 0 sget DAC         # view the current value
 amixer -c 0 sset DAC 80%     # set the percentage
 ```
 
+
+
 ### Full-Duplex Recording and Playback
 
 The recording and playback nodes of the RDK Audio Kit are independent channels, supporting full-duplex recording and playback.
@@ -222,7 +226,7 @@ Note that when DIP switch 2 is set to off, a single I2S channel is used for full
 
 When the number of I2S channels is 1, the sample rate and sample format of playback and recording must be the same, because the recording and playback data channels share the same bit clock.
 
-## 3.3 Next Steps
+## Next Steps
 
 At this point, you have experienced the basic functions of the RDK Audio Kit.
 
