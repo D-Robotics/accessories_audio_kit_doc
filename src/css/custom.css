@@ -432,8 +432,9 @@ article.markdown .table-responsive > table td {
   margin: 0;
 }
 
-/* 物品清单表格占满内容宽度（覆盖 Infima 的 width:max-content） */
+/* 物品清单表格占满内容宽度（覆盖 Infima 的 display:block，恢复为 table 布局） */
 .markdown table.packing-table {
+  display: table;
   width: 100% !important;
   min-width: 100% !important;
   max-width: 100% !important;
