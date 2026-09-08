@@ -5,31 +5,40 @@ sidebar_position: 4
 
 # 4. 硬件说明
 
-## 4.1 结构安装说明
+## 结构安装说明
 
-RDK 音频拓展板边缘留有 4 个金属化孔，可使用 4×M2.5 螺栓将板卡固定。
+### RDK 音频拓展板
+
+边缘留有 4 个金属化孔，可使用 4 × M2.5 螺栓将板卡固定。
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/structure-mount-expansion-board.png" alt="RDK 音频拓展板结构安装" width="60%" />
 
-RDK 音频拓展板接口留有 1 个金属化孔，可使用 1×M2.5 螺栓将板卡固定，配合 40PIN 接口紧固安装。
+### RDK 音频拓展板接口
+
+边缘留有 1 个金属化孔，可使用 1×M2.5 螺栓将板卡固定，配合 40PIN 接口紧固安装。
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/structure-mount-adapter-board.png" alt="RDK 音频拓展板接口结构安装" width="60%" />
 
-RDK 音频拓展板 4-Mic 阵列留有 4 个金属化孔，可使用 4×M3 螺栓将板卡固定。
+### RDK 音频拓展板 4-Mic 阵列
+
+留有 4 个金属化孔，可使用 4 × M3 螺栓将板卡固定。
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/structure-mount-4mic-array.png" alt="RDK 音频拓展板 4-Mic 阵列结构安装" width="60%" />
 
-RDK 音频拓展版 6-Mic 阵列留有 3 个金属化孔，可使用 3×M6 螺栓将板卡固定。
+### RDK 音频拓展版 6-Mic 阵列
+
+留有 3 个金属化孔，可使用 3 × M6 螺栓将板卡固定。
+
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/structure-mount-6mic-array.png" alt="RDK 音频拓展板 6-Mic 阵列结构安装" width="60%" />
 
 :::info 说明
 - 安装时，建议合理使用垫圈，并交替锁紧螺栓，避免产品 PCB 板发生断裂以造成产品损坏。
 - 如需将麦克风阵列或扬声器安装至密封结构内，需用户根据实际情况自行设计导音结构，避免影响产品录音或播放质量。
-- 3D 模型文件详见 [资源下载](./06_downloads.md)。
+- 3D 模型文件详见 [资料下载](./06_downloads.md)。
 :::
 
-## 4.2 硬件接口说明
+## 硬件接口说明
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/audio-expansion-board.jpeg" alt="RDK 音频拓展板接口描述" width="80%" />
 
@@ -57,7 +66,7 @@ RDK 音频拓展版 6-Mic 阵列留有 3 个金属化孔，可使用 3×M6 螺�
 
 连接器 PIN1 位置与 Mark 点标注一致，线序如下表所示：
 
-<img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/j10-pinout.png" alt="J10 音频数字接口线序" width="80%" />
+<img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/j10-pinout.png" alt="J10 音频数字接口线序" width="30%" />
 
 | PIN | Name | Description |
 | --- | --- | --- |
@@ -87,7 +96,7 @@ RDK 音频拓展版 6-Mic 阵列留有 3 个金属化孔，可使用 3×M6 螺�
 
 连接器 PIN1 位置靠近 Mark 点（最右侧），线序如下表所示：
 
-<img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/j11-pinout.png" alt="J11 麦克风阵列接口线序" width="80%" />
+<img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/j11-pinout.png" alt="J11 麦克风阵列接口线序" width="30%" />
 
 | PIN | Name | Description |
 | --- | --- | --- |
@@ -140,16 +149,16 @@ RDK 音频拓展版 6-Mic 阵列留有 3 个金属化孔，可使用 3×M6 螺�
 
 该接口是一个 4 通道拨码开关，用于选择音频接口、通道数量、参考电平等属性。默认状态如下， 4 个通道均为置 0 状态，使用镊子将对应通道上拨，可将对应通道置 1，拨码状态表如下：
 
-<img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s1-dip-switch.png" alt="S1 拨码开关" width="80%" />
+<img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s1-dip-switch.png" alt="S1 拨码开关" width="30%" />
 
 | PIN | Name | Description |
 | --- | --- | --- |
-| 1 | USB/I2S 选择 | 0：I2S 模式<br/>1：USB 模式 |
+| 1 | USB/I2S 选择 | 0：USB 模式<br/>1：I2S 模式 |
 | 2 | I2S 通道数选择 | 0：单通道<br/>1：双通道（适用于 RDK S600 的音频接口） |
 | 3 | I2S 电平选择 | 0：1.8V<br/>1：3.3V |
 | 4 | N/A |  |
 
-#### 连接器型号
+### 连接器型号
 
 | 连接器 | 连接器型号 | 连接器厂商 |
 | --- | --- | --- |

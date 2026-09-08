@@ -5,19 +5,27 @@ sidebar_position: 4
 
 # 4. Hardware Description
 
-## 4.1 Mounting Instructions
+## Mounting Instructions
+
+### RDK Audio Expansion Board
 
 The RDK Audio Expansion Board has 4 plated mounting holes on its edges, and can be secured with 4 × M2.5 screws.
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/structure-mount-expansion-board.png" alt="RDK Audio Expansion Board mounting" width="60%" />
 
+### RDK Audio Expansion Board Adapter
+
 The RDK Audio Expansion Board Adapter has 1 plated mounting hole, and can be secured with 1 × M2.5 screw, working with the 40-pin interface for firm mounting.
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/structure-mount-adapter-board.png" alt="RDK Audio Expansion Board Adapter mounting" width="60%" />
 
+### RDK Audio Expansion Board 4-Mic Array
+
 The RDK Audio Expansion Board 4-Mic Array has 4 plated mounting holes, and can be secured with 4 × M3 screws.
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/structure-mount-4mic-array.png" alt="RDK Audio Expansion Board 4-Mic Array mounting" width="60%" />
+
+### RDK Audio Expansion Board 6-Mic Array
 
 The RDK Audio Expansion Board 6-Mic Array has 3 plated mounting holes, and can be secured with 3 × M6 screws.
 
@@ -29,7 +37,7 @@ The RDK Audio Expansion Board 6-Mic Array has 3 plated mounting holes, and can b
 - For the 3D model files, see [Downloads](./06_downloads.md).
 :::
 
-## 4.2 Hardware Interface Description
+## Hardware Interface Description
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/audio-expansion-board.jpeg" alt="RDK Audio Expansion Board interface description" width="80%" />
 
@@ -57,7 +65,7 @@ This interface breaks out the I2S and I2C signals to connect the RDK Audio Expan
 
 The connector PIN1 position matches the Mark point. The pinout is shown in the table below:
 
-<img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/j10-pinout.png" alt="J10 audio digital interface pinout" width="80%" />
+<img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/j10-pinout.png" alt="J10 audio digital interface pinout" width="30%" />
 
 | PIN | Name | Description |
 | --- | --- | --- |
@@ -88,7 +96,7 @@ This interface connects the RDK audio core board to the RDK 4-Mic or 6-Mic array
 
 The connector PIN1 position is near the Mark point (rightmost). The pinout is shown in the table below:
 
-<img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/j11-pinout.png" alt="J11 microphone array interface pinout" width="80%" />
+<img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/j11-pinout.png" alt="J11 microphone array interface pinout" width="30%" />
 
 | PIN | Name | Description |
 | --- | --- | --- |
@@ -141,16 +149,16 @@ This interface loads the debug mode of the audio board and should be avoided dur
 
 This interface is a 4-channel DIP switch used to select the audio interface, channel count, reference level, and other properties. The default state is as follows: all 4 channels are set to 0. Use tweezers to flip a channel up to set it to 1. The DIP switch state table is shown below:
 
-<img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s1-dip-switch.png" alt="S1 DIP switch" width="80%" />
+<img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s1-dip-switch.png" alt="S1 DIP switch" width="30%" />
 
 | PIN | Name | Description |
 | --- | --- | --- |
-| 1 | USB/I2S selection | 0: I2S mode<br/>1: USB mode |
+| 1 | USB/I2S selection | 0: USB mode<br/>1: I2S mode |
 | 2 | I2S channel count selection | 0: single-channel<br/>1: dual-channel (for the audio interface of RDK S600) |
 | 3 | I2S level selection | 0: 1.8V<br/>1: 3.3V |
 | 4 | N/A |  |
 
-#### Connector Models
+### Connector Models
 
 | Connector | Connector Model | Manufacturer |
 | --- | --- | --- |
