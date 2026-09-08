@@ -42,9 +42,9 @@ RDK™ 音频套件是一款支持全双工多通道录音与播放的音频开�
 | J10 | 音频数字接口 | 用于 I2C 设置与音频信号传输。 |
 | J11 | 麦克风阵列接口 | 用于连接 RDK 音频核心板与 RDK 4 麦阵列或 6 麦阵列。 |
 
-### RDK 音频转拓展板接口
+### RDK 音频拓展板接口
 
-<img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/audio-adapter-board.jpeg" alt="RDK 音频转拓展板接口" width="70%" />
+<img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/audio-adapter-board.jpeg" alt="RDK 音频拓展板接口" width="70%" />
 
 | 接口位号 | 接口名称 | 描述 |
 | --- | --- | --- |
@@ -72,7 +72,7 @@ RDK™ 音频套件是一款支持全双工多通道录音与播放的音频开�
 
 :::tip 提示
 
-详细说明见 [硬件说明](./04_hardware.md)。
+详细硬件说明见 [硬件说明](./04_hardware.md)。
 
 :::
 

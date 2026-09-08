@@ -72,7 +72,7 @@ The following table lists the compatibility of this product with RDK developer k
 
 :::tip Tip
 
-For details, see [Hardware Description](./04_hardware.md).
+For detailed hardware description, see [Hardware Description](./04_hardware.md).
 
 :::
 
