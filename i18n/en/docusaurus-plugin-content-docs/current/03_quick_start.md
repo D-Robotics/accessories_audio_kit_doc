@@ -235,4 +235,4 @@ Next:
 - [4.1. Mounting Instructions](./04_hardware.md#41-mounting-instructions) describes the structural parameters and installation precautions of the RDK Audio Kit in detail; recommended for structural developers.
 - [4.2. Hardware Interface Description](./04_hardware.md#42-hardware-interface-description) describes the hardware interfaces of the RDK Audio Kit in detail; recommended for hardware developers.
 - To develop audio applications using this product with an RDK development board, see the [USB Audio Device Usage Guide](https://developer.d-robotics.cc/case_doc/en/getting_started/usb_peripherals#usb-audio).
-- To use audio preprocessing, DOA, VAD, wake word, custom command words, ASR, TTS, and other algorithms based on the RDK Audio Kit, see the [corresponding chapter in the TROS manual (to be replaced)](tros).
+- To use audio preprocessing, DOA, VAD, wake word, custom command words, ASR, TTS, and other algorithms based on the RDK Audio Kit, see the [Smart Voice Box](https://developer.d-robotics.cc/tros_doc/en/apps/smart_voice_box?v=3.5.0&p=RDK+X5).

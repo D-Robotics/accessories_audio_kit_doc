@@ -234,4 +234,4 @@ I2S 通道数为 1 时，播放与录制的采样率和采样格式必须一致�
 - [4.1.结构安装说明](./04_hardware.md#41-结构安装说明) 中详细说明了 RDK 音频套件的结构参数与安装注意事项，建议结构开发者阅读；
 - [4.2.硬件接口说明](./04_hardware.md#42-硬件接口说明) 中详细介绍了 RDK 音频套件各接口的硬件描述，建议硬件开发者阅读；
 - 使用本产品结合 RDK 开发板进行音频应用开发，见 [USB 音频设备使用指南](https://developer.d-robotics.cc/case_doc/getting_started/usb_peripherals#usb-%E9%9F%B3%E9%A2%91%E8%AE%BE%E5%A4%87)。
-- 基于 RDK 音频套件使用音频前处理、DOA、VAD、语音唤醒、自定义命令词、ASR、TTS 等算法，见 [待替换 TROS 手册对应章节](tros)。
+- 基于 RDK 音频套件使用音频前处理、DOA、VAD、语音唤醒、自定义命令词、ASR、TTS 等算法，见 [智能语音盒子](https://developer.d-robotics.cc/tros_doc/apps/smart_voice_box?v=3.5.0&p=RDK+X5)。
