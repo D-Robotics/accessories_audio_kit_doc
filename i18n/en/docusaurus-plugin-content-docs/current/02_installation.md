@@ -1,16 +1,18 @@
 ---
+title: Installation
+description: Provides the packing list and explains how to connect the expansion board, mic array, speakers, and development boards, plus USB mode configuration.
 sidebar_position: 2
 ---
 
 
-# 2. Installation
+# Installation
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-## Packing List
+## Packing list
 
 Prepare the following items before installing the module:
 
@@ -35,7 +37,7 @@ Prepare the following items before installing the module:
       <td><img className="table-item-image" src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/packing-audio-4mic-array.png" alt="RDK Audio Expansion Board 4-Mic Array" /><img className="table-item-image" src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/packing-audio-6mic-array.png" alt="RDK Audio Expansion Board 6-Mic Array" /></td>
     </tr>
     <tr>
-      <td>FFC/FPC cable<br/>same-side contacts, 36-pin, 0.5 mm pitch</td>
+      <td>FFC/FPC cable<br/>same-side contacts, 36PIN, 0.5 mm pitch</td>
       <td><img className="table-item-image" src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/packing-ffc-fpc-cable.png" alt="FFC/FPC cable" /></td>
     </tr>
     <tr>
@@ -53,29 +55,29 @@ Prepare the following items before installing the module:
   </tbody>
 </table>
 
-## Installation and Connection
+## Installation and connection
 
-### Connecting the Expansion Board to the Mic Array
+### Connect the expansion board to the mic array
 
-Connect one end of the same-side 36-pin 0.5 mm pitch FFC/FPC cable to the microphone array interface on the RDK Audio Expansion Board, and the other end to the microphone array interface on the RDK Audio Expansion Board 4/6-Mic Array. The contacts of the cable must face the PCB board.
+Connect one end of the same-side 36PIN 0.5 mm pitch FFC/FPC cable to the microphone array interface on the RDK Audio Expansion Board, and the other end to the microphone array interface on the RDK Audio Expansion Board 4/6-Mic Array. The contacts of the cable must face the PCB board.
 
-<img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/connect-expansion-board-mic-array.png" alt="Connecting the Expansion Board to the Mic Array" width="50%" />
+<img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/connect-expansion-board-mic-array.png" alt="Connecting the expansion board to the mic array" width="50%" />
 
-### Connecting the Expansion Board to the Speakers
+### Connect the expansion board to the speakers
 
 Connect the speakers to the expansion board using the HC1.25 connectors. Align the positive and negative terminals of the speakers with the silkscreen on the core board to keep the stereo polarity consistent.
 
-<img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/connect-expansion-board-speakers.png" alt="Connecting the Expansion Board to the Speakers" width="50%" />
+<img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/connect-expansion-board-speakers.png" alt="Connecting the expansion board to the speakers" width="50%" />
 
-### Connecting the Expansion Board to the Development Board
+### Connect the expansion board to the development board
 
 <Tabs groupId="rdk-board">
 
 <TabItem value="RDK X5">
 
-When using the RDK Audio Kit with the RDK X5, use the RDK Audio Expansion Board Adapter to convert the I2C and I2S pins in the 40-pin interface of the RDK X5 into an audio digital interface with a pinout compatible with the RDK Audio Kit.
+When using the RDK Audio Kit with the RDK X5, use the RDK Audio Expansion Board Adapter to convert the I2C and I2S pins in the 40PIN interface of the RDK X5 into an audio digital interface with a pinout compatible with the RDK Audio Kit.
 
-Connect the RDK Audio Expansion Board Adapter to the 40-pin interface of the RDK X5, and use a GH1.25-14P both-ends-reversed cable to connect the audio digital interface of the RDK Audio Expansion Board Adapter to the audio digital interface of the RDK Audio Expansion Board.
+Connect the RDK Audio Expansion Board Adapter to the 40PIN interface of the RDK X5, and use a GH1.25-14P both-ends-reversed cable to connect the audio digital interface of the RDK Audio Expansion Board Adapter to the audio digital interface of the RDK Audio Expansion Board.
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/connect-rdk-x5.png" alt="RDK X5 connection" width="50%" />
 
@@ -85,7 +87,7 @@ Connect the RDK Audio Expansion Board Adapter to the 40-pin interface of the RDK
 
 Based on the RDK X5 Module core board, you can design your own baseboard to integrate the I2C and I2S pins into an audio digital interface that matches the RDK Audio Expansion Board Adapter. This document describes how to connect the RDK audio module using the official RDK X5 Module carrier board.
 
-Connect the RDK Audio Expansion Board Adapter to the 40-pin interface of the RDK X5 Module carrier board, and use a GH1.25-14P both-ends-reversed cable to connect the audio digital interface of the RDK Audio Expansion Board Adapter to the audio digital interface of the RDK Audio Expansion Board.
+Connect the RDK Audio Expansion Board Adapter to the 40PIN interface of the RDK X5 Module carrier board, and use a GH1.25-14P both-ends-reversed cable to connect the audio digital interface of the RDK Audio Expansion Board Adapter to the audio digital interface of the RDK Audio Expansion Board.
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/connect-rdk-x5-module.png" alt="RDK X5 Module connection" width="50%" />
 
@@ -93,7 +95,7 @@ Connect the RDK Audio Expansion Board Adapter to the 40-pin interface of the RDK
 
 <TabItem value="RDK S100/S100P">
 
-Connect the RDK Audio Expansion Board Adapter to the 40-pin interface of the RDK S100, and use a GH1.25-14P both-ends-reversed cable to connect the audio digital interface of the RDK Audio Expansion Board Adapter to the audio digital interface of the RDK Audio Expansion Board.
+Connect the RDK Audio Expansion Board Adapter to the 40PIN interface of the RDK S100, and use a GH1.25-14P both-ends-reversed cable to connect the audio digital interface of the RDK Audio Expansion Board Adapter to the audio digital interface of the RDK Audio Expansion Board.
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/connect-rdk-s100.png" alt="RDK S100/S100P connection" width="50%" />
 

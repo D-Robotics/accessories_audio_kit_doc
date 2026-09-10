@@ -1,11 +1,13 @@
 ---
+title: Hardware description
+description: Describes the mounting instructions and the pin definitions for each hardware interface.
 sidebar_position: 4
 ---
 
 
-# 4. Hardware Description
+# Hardware description
 
-## Mounting Instructions
+## Mounting instructions
 
 ### RDK Audio Expansion Board
 
@@ -15,7 +17,7 @@ The RDK Audio Expansion Board has 4 plated mounting holes on its edges, and can 
 
 ### RDK Audio Expansion Board Adapter
 
-The RDK Audio Expansion Board Adapter has 1 plated mounting hole, and can be secured with 1 × M2.5 screw, working with the 40-pin interface for firm mounting.
+The RDK Audio Expansion Board Adapter has 1 plated mounting hole, and can be secured with 1 × M2.5 screw, working with the 40PIN interface for firm mounting.
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/structure-mount-adapter-board.png" alt="RDK Audio Expansion Board Adapter mounting" width="60%" />
 
@@ -34,32 +36,32 @@ The RDK Audio Expansion Board 6-Mic Array has 3 plated mounting holes, and can b
 :::info Note
 - When mounting, use washers where appropriate and tighten the screws alternately to avoid cracking the PCB and damaging the product.
 - If the mic array or speakers need to be installed into a sealed enclosure, design the sound-guiding structure yourself based on the actual situation to avoid affecting recording or playback quality.
-- For the 3D model files, see [Downloads](./06_downloads.md).
+- For the 3D model files, see [Downloads](./05_downloads.md).
 :::
 
-## Hardware Interface Description
+## Hardware interface description
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/audio-expansion-board.jpeg" alt="RDK Audio Expansion Board interface description" width="80%" />
 
-### Interface Description
+### Interface description
 
-#### J1 Left-Channel Amplifier Interface
+#### J1 left-channel amplifier interface
 
 This interface connects a left-channel speaker and outputs left-channel audio through a differential signal. The differential polarity corresponds to the PCB silkscreen.
 
-#### J2 Right-Channel Amplifier Interface
+#### J2 right-channel amplifier interface
 
 This interface connects a right-channel speaker and outputs right-channel audio through a differential signal. The differential polarity corresponds to the PCB silkscreen.
 
-#### J4 Debug UART
+#### J4 debug UART
 
 This interface is for internal debugging and should be avoided in daily use.
 
-#### J7 USB Interface
+#### J7 USB interface
 
 Used for flashing the expansion board firmware and for USB audio (`UAC`) functionality.
 
-#### J10 Audio Digital Interface
+#### J10 audio digital interface
 
 This interface breaks out the I2S and I2C signals to connect the RDK Audio Expansion Board Adapter or an RDK development board.
 
@@ -90,7 +92,7 @@ The audio interface selector switch can set the audio kit to single-channel or d
 - In dual-channel I2S mode, audio signals are output simplex through PIN 1~4 and sampled simplex through PIN 6-10. In this mode, the sampling channel and output channel can be at different sample rates.
 :::
 
-#### J11 Microphone Array Interface
+#### J11 microphone array interface
 
 This interface connects the RDK audio core board to the RDK 4-Mic or 6-Mic array.
 
@@ -137,15 +139,15 @@ The connector PIN1 position is near the Mark point (rightmost). The pinout is sh
 | 35 | MICBIAS4_A | Mic bias voltage |
 | 36 | AGND |  |
 
-#### K1 RST Button
+#### K1 RST button
 
 This interface resets the audio kit state and should be avoided during normal use.
 
-#### K2 LOAD Button
+#### K2 LOAD button
 
 This interface loads the debug mode of the audio board and should be avoided during normal use.
 
-#### S1 Audio Interface Selector Switch
+#### S1 audio interface selector switch
 
 This interface is a 4-channel DIP switch used to select the audio interface, channel count, reference level, and other properties. The default state is as follows: all 4 channels are set to 0. Use tweezers to flip a channel up to set it to 1. The DIP switch state table is shown below:
 
@@ -158,7 +160,7 @@ This interface is a 4-channel DIP switch used to select the audio interface, cha
 | 3 | I2S level selection | 0: 1.8V<br/>1: 3.3V |
 | 4 | N/A |  |
 
-### Connector Models
+### Connector models
 
 | Connector | Connector Model | Manufacturer |
 | --- | --- | --- |

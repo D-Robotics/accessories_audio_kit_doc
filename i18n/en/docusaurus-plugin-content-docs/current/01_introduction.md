@@ -1,16 +1,17 @@
 ---
+title: Product introduction
+description: Introduces the kit contents, board compatibility, hardware interface overview, and key specifications.
 sidebar_position: 1
-slug: /introduction
 ---
 
 
-# 1. Product Introduction
+# Product introduction
 
 The RDK™ Audio Kit is an audio development kit that supports full-duplex multi-channel recording and playback. The kit includes the RDK™ Audio Expansion Board, the RDK™ Audio Expansion Board Adapter, and the RDK™ Audio Expansion Board 4-Mic / 6-Mic Arrays. It supports switching between USB and I2S modes, and between single-channel and dual-channel I2S modes. It supports standard sample rates from 8 kHz to 96 kHz, provides dual-channel playback and 8-channel synchronized sampling, and supports up to 6 microphone inputs and 2 loopback inputs. It is suitable for audio processing such as echo cancellation, sound source localization, and far-field pickup, and can be widely used in scenarios such as smart conferencing, voice interaction, and robot hearing.
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/audio-kit-overview.jpeg" alt="RDK Audio Kit" width="80%" />
 
-## Supported Boards
+## Supported boards
 
 The following table lists the compatibility of this product with RDK developer kit boards:
 
@@ -23,7 +24,7 @@ The following table lists the compatibility of this product with RDK developer k
 | RDK S100/S100P | Supported | - |
 | RDK S600 | Supported | - |
 
-## Hardware Interface Overview
+## Hardware interface overview
 
 
 ### RDK Audio Expansion Board
@@ -48,7 +49,7 @@ The following table lists the compatibility of this product with RDK developer k
 
 | Silkscreen | Interface | Description |
 | --- | --- | --- |
-| J1 | 40-pin interface | Connects to a development board with a 40-pin header. |
+| J1 | 40PIN interface | Connects to a development board with a 40PIN header. |
 | J2 | Audio digital interface | Breaks out the audio-related interfaces for connecting the audio module. |
 
 ### RDK Audio Expansion Board 4-Mic Array
@@ -76,7 +77,7 @@ For detailed hardware description, see [Hardware Description](./04_hardware.md).
 
 :::
 
-## Key Specifications
+## Key specifications
 
 | Item | Description |
 | --- | --- |

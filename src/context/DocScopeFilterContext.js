@@ -192,6 +192,14 @@ function replaceSearch(history, location, nextSearch) {
   });
 }
 
+function normalizePathname(pathname) {
+  const p = String(pathname || '');
+  if (p.length > 1 && p.endsWith('/')) {
+    return p.slice(0, -1);
+  }
+  return p;
+}
+
 export function DocScopeFilterProvider({ children }) {
   const location = useLocation();
   const history = useHistory();
@@ -199,6 +207,31 @@ export function DocScopeFilterProvider({ children }) {
   const locale = i18n.currentLocale;
   const buildScope = siteConfig?.customFields?.docBuildScope;
   const hasBuildScope = Boolean(buildScope?.enabled && buildScope?.product);
+
+  useEffect(() => {
+    if (hasBuildScope) {
+      return;
+    }
+    const base = String(siteConfig?.baseUrl || '/');
+    const baseNoSlash = normalizePathname(base);
+    const pathnameNoSlash = normalizePathname(location.pathname);
+    const enRoot = normalizePathname(`${base}en`);
+    const enRootSlash = normalizePathname(`${base}en/`);
+
+    // 站点入口重定向到文档首页 /overview
+    if (pathnameNoSlash === baseNoSlash) {
+      history.replace(`${base}overview${location.search}${location.hash}`);
+    } else if (pathnameNoSlash === enRoot || pathnameNoSlash === enRootSlash) {
+      history.replace(`${base}en/overview${location.search}${location.hash}`);
+    }
+  }, [
+    hasBuildScope,
+    history,
+    location.pathname,
+    location.search,
+    location.hash,
+    siteConfig?.baseUrl,
+  ]);
 
   const { version, product: productFromUrl } = useMemo(() => {
     if (hasBuildScope) {

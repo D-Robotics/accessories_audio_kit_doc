@@ -1,16 +1,18 @@
 ---
+title: Quick start
+description: Covers hardware/software configuration and driver loading for each board, then demonstrates multi-channel recording, stereo playback, and full-duplex recording/playback.
 sidebar_position: 3
 ---
 
 
-# 3. Quick Start
+# Quick start
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-## Hardware and Software Configuration
+## Hardware and software configuration
 
 <Tabs groupId="rdk-board">
 
@@ -30,7 +32,7 @@ On the board, run `sudo dpkg -i hobot-*` to install them.
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/x5-install-hobot-packages.png" alt="Installing the hobot patch packages" width="80%" /><br/>
 
-Run `srpi-config`, then click **3 Interface Options** -> **I5 Audio** -> **Audio Driver HAT V2** in order, press Enter, and then select `<Finish>`. Restart as prompted, or run `sudo reboot` yourself to apply all the configuration.
+Run `srpi-config`, then click **3 Interface Options** > **I5 Audio** > **Audio Driver HAT V2** in order, press Enter, and then select `<Finish>`. Restart as prompted, or run `sudo reboot` yourself to apply all the configuration.
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/x5-srpi-config-audio-hat-v2.gif" alt="Configuring Audio Driver HAT V2 in srpi-config" width="80%" /><br/>
 
@@ -46,11 +48,11 @@ Run `ls -l /dev/snd` to list the recording and playback nodes. `pcmC0D0p` is the
 
 <TabItem value="RDK S100/S100P">
 
-On the RDK S100/S100P, `PCM0` is connected to the Wi-Fi & BT module by default for Bluetooth audio. To use the RDK Audio Kit, set the `PCM0` function switch to `OFF` to route the `PCM0`-related pins to the 40-pin header.
+On the RDK S100/S100P, `PCM0` is connected to the Wi-Fi & BT module by default for Bluetooth audio. To use the RDK Audio Kit, set the `PCM0` function switch to `OFF` to route the `PCM0`-related pins to the 40PIN header.
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-pcm0-function-switch.jpeg" alt="RDK S100/S100P PCM0 function switch" width="80%" /><br/>
 
-Set the DIP switch of the RDK Audio Kit as follows (101X). In this state, the mode is set to I2S, the number of I2S channels is 1, and the I2S reference level is 3V3.
+Set the DIP switch of the RDK Audio Kit as follows (`101X`). In this state, the mode is set to I2S, the number of I2S channels is 1, and the I2S reference level is 3V3.
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/dip-switch-i2s-101x.png" alt="DIP switch 101X" width="30%" /><br/>
 
@@ -75,11 +77,11 @@ Run `ls -l /dev/snd` to list the recording and playback nodes. `pcmC0D0c` is the
 
 <TabItem value="RDK S600">
 
-Set the DIP switch of the RDK Audio Kit as follows (100X) to set the RDK Audio Kit to single-channel full-duplex I2S mode with a 1.8V reference level.
+Set the DIP switch of the RDK Audio Kit as follows (`100X`) to set the RDK Audio Kit to single-channel full-duplex I2S mode with a 1.8V reference level.
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/dip-switch-i2s-100x.png" alt="RDK S600 DIP switch 100X" width="30%" /><br/>
 
-Only the RDK S600 can use dual-channel simplex I2S for recording and playback with independent clocks and independent sample rates. It must be configured as shown below (110X). For details, see [Hardware Interface Description](./04_hardware.md#42-hardware-interface-description).
+Only the RDK S600 can use dual-channel simplex I2S for recording and playback with independent clocks and independent sample rates. It must be configured as shown below (`110X`). For details, see [Hardware interface description](./04_hardware.md#hardware-interface-description).
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/dip-switch-i2s-110x.png" alt="RDK S600 DIP switch 110X" width="30%" /><br/>
 
@@ -128,7 +130,7 @@ Run `ls -l /dev/snd` to list the recording and playback nodes. `pcmC0D0c` is the
 
 <TabItem value="USB Mode">
 
-Set the DIP switch to the following state (0XXX) to switch the RDK Audio Kit to USB audio mode.
+Set the DIP switch to the following state (`0XXX`) to switch the RDK Audio Kit to USB audio mode.
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/dip-switch-usb-0xxx.png" alt="USB mode DIP switch 0XXX" width="30%" /><br/>
 
@@ -143,11 +145,11 @@ Run `ls -l /dev/snd` to list the recording and playback nodes. `pcmC1D0c` is the
 </TabItem>
 </Tabs>
 
-## Feature Walkthrough
+## Feature walkthrough
 
 This section uses the RDK X5 + RDK Audio Kit as an example to demonstrate how to record multi-channel audio with the `arecord` tool, play back multi-channel audio with the `aplay` tool, and perform full-duplex recording and playback.
 
-### Multi-Channel Audio Recording
+### Record multi-channel audio
 
 Make sure the recording node exists. You can use the `arecord` command to record audio. A brief description of the `arecord` recording usage:
 
@@ -160,7 +162,7 @@ arecord [options] [output file path]
     -c channel count
 ```
 
-Here we do not perform format conversion. Assume the sound card channel number shown by `ls -l /dev/snd` is 0 and the playback device number is 1. Use the `S16_LE` format, a sample rate of 16000, and record 8-channel audio for 10 seconds:
+Here we do not perform format conversion. Assume the sound card channel number shown by `ls -l /dev/snd` is 0 and the recording device number is 1. Use the `S16_LE` format, a sample rate of 16000, and record 8-channel audio for 10 seconds:
 
 ```shell
 arecord -D hw:0,1 -d 10 -r 16000 -f S16_LE -c 8 record.wav
@@ -170,7 +172,7 @@ arecord -D hw:0,1 -d 10 -r 16000 -f S16_LE -c 8 record.wav
 
 Note that regardless of whether you use a 4-Mic or 6-Mic array, you must record 8 channels of audio. Among the 8 channels, the first 4/6 channels are the microphones of the mic array, and channels 7 and 8 are the loopback data of the stereo amplifier. When recording with 4 channels, channels 5 and 6 are empty and contain only white noise.
 
-### Stereo Audio Playback
+### Play stereo audio
 
 Make sure the playback node exists. You can use the `aplay` command to play audio. A brief description of the `aplay` playback usage:
 
@@ -183,7 +185,7 @@ aplay [options] [input file path]
     -c channel count
 ```
 
-Assume the sound card channel number shown by `ls -l /dev/snd` is 0 and the recording device number is 0, and play the audio file:
+Assume the sound card channel number shown by `ls -l /dev/snd` is 0 and the playback device number is 0, and play the audio file:
 
 ```bash
 aplay -D hw:0,0 record.wav
@@ -202,7 +204,7 @@ amixer -c 0 sset DAC 80%     # set the percentage
 
 
 
-### Full-Duplex Recording and Playback
+### Record and play back in full-duplex mode
 
 The recording and playback nodes of the RDK Audio Kit are independent channels, supporting full-duplex recording and playback.
 
@@ -215,7 +217,7 @@ aplay -D hw:0,0 demo.wav
 Place the speaker close to the mic array, and in the second terminal enter the following command to record 5 seconds of audio:
 
 ```bash
-arecord -D hw:0,1 -d 3 -r 16000 -f S16_LE -c 8 record.wav
+arecord -D hw:0,1 -d 5 -r 16000 -f S16_LE -c 8 record.wav
 ```
 
 If you can hear the played audio content in the recorded audio, full-duplex recording and playback is working.
@@ -226,13 +228,13 @@ Note that when DIP switch 2 is set to off, a single I2S channel is used for full
 
 When the number of I2S channels is 1, the sample rate and sample format of playback and recording must be the same, because the recording and playback data channels share the same bit clock.
 
-## Next Steps
+## Next steps
 
 At this point, you have experienced the basic functions of the RDK Audio Kit.
 
 Next:
 
-- [4.1. Mounting Instructions](./04_hardware.md#41-mounting-instructions) describes the structural parameters and installation precautions of the RDK Audio Kit in detail; recommended for structural developers.
-- [4.2. Hardware Interface Description](./04_hardware.md#42-hardware-interface-description) describes the hardware interfaces of the RDK Audio Kit in detail; recommended for hardware developers.
+- [Mounting instructions](./04_hardware.md#mounting-instructions) describes the structural parameters and installation precautions of the RDK Audio Kit in detail; recommended for structural developers.
+- [Hardware interface description](./04_hardware.md#hardware-interface-description) describes the hardware interfaces of the RDK Audio Kit in detail; recommended for hardware developers.
 - To develop audio applications using this product with an RDK development board, see the [USB Audio Device Usage Guide](https://developer.d-robotics.cc/case_doc/en/getting_started/usb_peripherals#usb-audio).
 - To use audio preprocessing, DOA, VAD, wake word, custom command words, ASR, TTS, and other algorithms based on the RDK Audio Kit, see the [Smart Voice Box](https://developer.d-robotics.cc/tros_doc/en/apps/smart_voice_box?v=3.5.0&p=RDK+X5).

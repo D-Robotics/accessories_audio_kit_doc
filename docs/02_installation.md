@@ -1,9 +1,11 @@
 ---
+title: 安装方法
+description: 提供物品清单，说明拓展板、麦克风阵列、扬声器与各型号开发板的连接方法，以及 USB 模式设置。
 sidebar_position: 2
 ---
 
 
-# 2. 安装方法
+# 安装方法
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
