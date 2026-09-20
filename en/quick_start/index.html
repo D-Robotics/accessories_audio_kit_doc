@@ -11,7 +11,7 @@
 <script defer="defer" src="https://cloud.umami.is/script.js" data-website-id="b0c771b8-947e-4fa4-8880-606ecab89c36"></script>
 <script src="https://hm.baidu.com/hm.js?24dd63cad43b63889ea6bede5fd1ab9e" async></script>
 <script src="/accessories_audio_kit_doc/en/js/umami-events.js" defer="defer"></script><link rel="stylesheet" href="/accessories_audio_kit_doc/en/assets/css/styles.09699431.css">
-<script src="/accessories_audio_kit_doc/en/assets/js/runtime~main.6900f0db.js" defer="defer"></script>
+<script src="/accessories_audio_kit_doc/en/assets/js/runtime~main.3c25e528.js" defer="defer"></script>
 <script src="/accessories_audio_kit_doc/en/assets/js/main.512b77df.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -117,15 +117,13 @@
 </li>
 <li>
 <p>After rebooting, enter the following commands to load the drivers (use the full-duplex commands when the number of I2S channels is 1, and the simplex commands when it is 2):</p>
-<pre tabindex="0" class="codeBlockStandalone_MEMb thin-scrollbar language-shell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"></code></pre>
+<div class="language-shell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-shell codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain"># Full-duplex:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">modprobe hobot_cpudai_super</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">modprobe snd-soc-es8156</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">modprobe snd-soc-es7210</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">modprobe hobot_snd_super_ac_fdx_host</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># Simplex:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">modprobe hobot_cpudai_super</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">modprobe snd-soc-es8156</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">modprobe snd-soc-es7210</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">modprobe hobot_snd_super_ac_master</span><br></span></code></pre></div></div>
 </li>
-</ol><h1>Full-duplex:</h1><p>modprobe hobot_cpudai_super
-modprobe snd-soc-es8156
-modprobe snd-soc-es7210
-modprobe hobot_snd_super_ac_fdx_host</p><h1>Simplex:</h1><p>modprobe hobot_cpudai_super
-modprobe snd-soc-es8156
-modprobe snd-soc-es7210
-modprobe hobot_snd_super_ac_master</p><div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">5. Modify the I2S drive capability:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">```shell</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">devmem 0x33805088 32 0x00000033</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">devmem 0x3380508c 32 0x00000033</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">devmem 0x34830020 32 0x17171717</span><br></span></code></pre></div></div><p>The above configuration is lost after a reboot.</p><ol start="6">
+<li>
+<p>Modify the I2S drive capability:</p>
+<div class="language-shell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-shell codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">devmem 0x33805088 32 0x00000033</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">devmem 0x3380508c 32 0x00000033</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">devmem 0x34830020 32 0x17171717</span><br></span></code></pre></div></div>
+<p>The above configuration is lost after a reboot.</p>
+</li>
 <li>
 <p>Run <code>cat /proc/asound/cards</code> to list all sound cards detected by ALSA. <code>s600snd2</code> is the sound card of the RDK Audio Kit, which means the configuration is effective.</p>
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s600-asound-cards.png" alt="RDK S600 ALSA sound card information" width="80%">
@@ -187,7 +185,7 @@ modprobe hobot_snd_super_ac_master</p><div class="language-text codeBlockContain
 </li>
 </ol>
 <p>In addition, you can write a program that uses the recording and playback devices simultaneously in two threads or two processes, which also achieves full-duplex recording and playback.</p>
-<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>注意</div><div class="admonitionContent_BuS1"><ul>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_BuS1"><ul>
 <li>
 <p>When DIP switch 2 is set to off, a single I2S channel is used for full-duplex recording and playback. Currently the RDK X5 and RDK S100/S100P only support this mode. For the RDK S600, you can set DIP switch 2 to on to use two independent I2S channels for recording and playback separately.</p>
 </li>
