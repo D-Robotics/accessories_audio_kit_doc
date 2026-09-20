@@ -107,13 +107,13 @@ import TabItem from '@theme/TabItem';
 4. After rebooting, enter the following commands to load the drivers (use the full-duplex commands when the number of I2S channels is 1, and the simplex commands when it is 2):
 
    ```shell
-# Full-duplex:
+   # Full-duplex:
    modprobe hobot_cpudai_super
    modprobe snd-soc-es8156
    modprobe snd-soc-es7210
    modprobe hobot_snd_super_ac_fdx_host
 
-# Simplex:
+   # Simplex:
    modprobe hobot_cpudai_super
    modprobe snd-soc-es8156
    modprobe snd-soc-es7210
@@ -237,7 +237,7 @@ The recording and playback nodes of the RDK Audio Kit are independent channels, 
 
 In addition, you can write a program that uses the recording and playback devices simultaneously in two threads or two processes, which also achieves full-duplex recording and playback.
 
-:::warning 注意
+:::warning 
 
 - When DIP switch 2 is set to off, a single I2S channel is used for full-duplex recording and playback. Currently the RDK X5 and RDK S100/S100P only support this mode. For the RDK S600, you can set DIP switch 2 to on to use two independent I2S channels for recording and playback separately.
 

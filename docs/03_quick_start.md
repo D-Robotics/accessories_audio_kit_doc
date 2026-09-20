@@ -107,13 +107,13 @@ import TabItem from '@theme/TabItem';
 4. 重启后，输入以下命令加载驱动（I2S 通道数为 1 使用全双工部分命令，为 2 使用单工部分命令）：
 
    ```shell
-# 全双工：
+   # 全双工：
    modprobe hobot_cpudai_super
    modprobe snd-soc-es8156
    modprobe snd-soc-es7210
    modprobe hobot_snd_super_ac_fdx_host
 
-# 单工：
+   # 单工：
    modprobe hobot_cpudai_super
    modprobe snd-soc-es8156
    modprobe snd-soc-es7210
