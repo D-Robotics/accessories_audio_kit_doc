@@ -100,7 +100,7 @@ import TabItem from '@theme/TabItem';
 
 2. 保证系统镜像版本 = RDK OS 5.1.0，将以下补丁包下载到 RDK S600 中。
 
-   [linux-image-rdk-s600_6.1.158-rt58-DR-5.1.0-2606301124-g8b1970-gaa81cd-dirty-22_arm64.deb](https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/file/linux-image-rdk-s600_6.1.158-rt58-DR-5.1.0-2606301124-g8b1970-gaa81cd-dirty-22_arm64.deb)
+   - [linux-image-rdk-s600_6.1.158-rt58-DR-5.1.0-2606301124-g8b1970-gaa81cd-dirty-22_arm64.deb](https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/file/linux-image-rdk-s600_6.1.158-rt58-DR-5.1.0-2606301124-g8b1970-gaa81cd-dirty-22_arm64.deb)
 
 3. 在板端输入 `sudo dpkg -i linux-*` 安装，然后重启。
 
@@ -203,7 +203,7 @@ amixer -c 0 sset ADC 80% cap      # 设置百分比
 
 保证播放节点存在，可以使用 `aplay` 查看播放音频，简单描述 `aplay` 命令播放用法：
 
-```bash
+```shell
 aplay [选项] [输入文件路径]
     -D 通路:CARD,DEVICE    通路可选 hw(直通硬件) plughw(自动格式转换) default(默认值)
     -d 播放时长（秒）
@@ -214,7 +214,7 @@ aplay [选项] [输入文件路径]
 
 假设 `ls -l /dev/snd` 查看到的声卡通道号为 0，播放设备号为 0，播放音频文件：
 
-```bash
+```shell
 aplay -D hw:0,0 record.wav
 ```
 
@@ -222,7 +222,7 @@ RDK 音频套件的功放为双声道，播放多通道音频时，`aplay` 工�
 
 如果声音过小，可以使用以下命令调整 RDK 音频套件的 DAC 功放音量，建议设置为 75% 测试：
 
-```bash
+```shell
 amixer -c 0 sset DAC 10%+    # 调大
 amixer -c 0 sset DAC 10%-    # 调小
 amixer -c 0 sget DAC         # 查看当前值
@@ -235,13 +235,13 @@ RDK 音频套件的录音与播放节点均为独立通道，支持全双工录�
 
 1. 启动 2 个终端，在第一个终端中播放较长的音频：
 
-   ```bash
+   ```shell
    aplay -D hw:0,0 demo.wav
    ```
 
 2. 将扬声器靠近麦克风阵列，在第二个终端中输入以下命令，录制 5 秒音频：
 
-   ```bash
+   ```shell
    arecord -D hw:0,1 -d 5 -r 16000 -f S16_LE -c 8 record.wav
    ```
 

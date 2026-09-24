@@ -202,7 +202,7 @@ amixer -c 0 sset ADC 80% cap      # set the percentage
 
 Make sure the playback node exists. You can use the `aplay` command to play audio. A brief description of the `aplay` playback usage:
 
-```bash
+```shell
 aplay [options] [input file path]
     -D path:CARD,DEVICE    path can be hw (direct to hardware), plughw (automatic format conversion), or default (default value)
     -d playback duration (seconds)
@@ -213,7 +213,7 @@ aplay [options] [input file path]
 
 Assume the sound card channel number shown by `ls -l /dev/snd` is 0 and the playback device number is 0, and play the audio file:
 
-```bash
+```shell
 aplay -D hw:0,0 record.wav
 ```
 
@@ -221,7 +221,7 @@ The amplifier of the RDK Audio Kit is stereo. When playing multi-channel audio, 
 
 If the sound is too low, use the following commands to adjust the DAC amplifier volume of the RDK Audio Kit. A volume of 75% is recommended for testing:
 
-```bash
+```shell
 amixer -c 0 sset DAC 10%+    # turn up
 amixer -c 0 sset DAC 10%-    # turn down
 amixer -c 0 sget DAC         # view the current value
@@ -236,13 +236,13 @@ The recording and playback nodes of the RDK Audio Kit are independent channels, 
 
 1. Open two terminals. In the first terminal, play a long audio file:
 
-   ```bash
+   ```shell
    aplay -D hw:0,0 demo.wav
    ```
 
 2. Place the speaker close to the mic array, and in the second terminal enter the following command to record 5 seconds of audio:
 
-   ```bash
+   ```shell
    arecord -D hw:0,1 -d 5 -r 16000 -f S16_LE -c 8 record.wav
    ```
 
