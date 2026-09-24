@@ -219,7 +219,7 @@ aplay -D hw:0,0 record.wav
 
 The amplifier of the RDK Audio Kit is stereo. When playing multi-channel audio, the `aplay` tool only plays the first 2 channels.
 
-If the sound is too low, use the following commands to adjust the DAC amplifier volume of the RDK Audio Kit. A volume of 75% is recommended for testing.
+If the sound is too low, use the following commands to adjust the DAC amplifier volume of the RDK Audio Kit. A volume of 75% is recommended for testing:
 
 ```bash
 amixer -c 0 sset DAC 10%+    # turn up
