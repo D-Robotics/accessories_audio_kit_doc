@@ -183,7 +183,20 @@ arecord -D hw:0,1 -d 10 -r 16000 -f S16_LE -c 8 record.wav
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/arecord-8ch-recording.png" alt="arecord 8-channel recording" width="80%" /><br/>
 
+:::warning 
+
 Note that regardless of whether you use a 4-Mic or 6-Mic array, you must record 8 channels of audio. Among the 8 channels, the first 4/6 channels are the microphones of the mic array, and channels 7 and 8 are the loopback data of the stereo amplifier. When recording with 4 channels, channels 5 and 6 are empty and contain only white noise.
+
+:::
+
+If you cannot record audio, you can try to use the following commands to adjust the ADC gain of the RDK Audio Kit:
+
+```shell
+amixer -c 0 sset ADC 10%+ cap     # turn up
+amixer -c 0 sset ADC 10%- cap     # turn down
+amixer -c 0 sget ADC              # view the current value
+amixer -c 0 sset ADC 80% cap      # set the percentage
+```
 
 ### Play stereo audio
 

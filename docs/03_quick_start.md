@@ -190,6 +190,14 @@ arecord -D hw:0,1 -d 10 -r 16000 -f S16_LE -c 8 record.wav
 
 :::
 
+如果录制不到声音，可以尝试使用以下命令调整 RDK 音频套件的 ADC 增益：
+
+```shell
+amixer -c 0 sset ADC 10%+ cap     # 调大
+amixer -c 0 sset ADC 10%- cap     # 调小
+amixer -c 0 sget ADC              # 查看当前值
+amixer -c 0 sset ADC 80% cap      # 设置百分比
+```
 
 ### 播放双声道音频
 
