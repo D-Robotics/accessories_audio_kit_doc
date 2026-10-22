@@ -165,4 +165,4 @@ This interface is a 4-channel DIP switch used to select the audio interface, cha
 | Connector | Connector Model | Manufacturer |
 | --- | --- | --- |
 | J1, J2 | HC-1.25-2PWT | - |
-| J10 | X1251WRS-14HF-LPSW |  XKB Connectivity |
+| J10 | X1251WRS-14HF-LPSW | XKB Connection |
