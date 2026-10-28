@@ -3,7 +3,6 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import {useColorMode, useThemeConfig} from '@docusaurus/theme-common';
-import {translate} from '@docusaurus/Translate';
 
 function LogoThemedImage({logo, alt, imageClassName}) {
   const {colorMode} = useColorMode();
@@ -40,12 +39,7 @@ export default function NavbarLogo() {
     ? 'https://d-robotics.github.io/rdk_doc_center/en/'
     : 'https://developer.d-robotics.cc/rdk_doc_center/';
 
-  // 通过 Translate 读取 logo.alt，使英文站使用 i18n/en/.../navbar.json 中的译文
-  const alt = translate({
-    id: 'logo.alt',
-    message: logo?.alt ?? title,
-    description: 'The alt text of navbar logo',
-  });
+  const alt = isEnglish ? 'D-Robotics logo' : '地瓜 logo';
 
   return (
     <Link href={docCenterUrl} className="navbar__brand">
