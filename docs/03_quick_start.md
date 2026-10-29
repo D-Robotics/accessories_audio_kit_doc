@@ -67,9 +67,11 @@ import VersionNavIcon, { VersionJumpLink } from '@site/src/components/VersionNav
 
    <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/dip-switch-i2s-101x.png" alt="拨码开关 101X" width="30%" /><br/>
 
-3. 保证系统镜像版本 = RDK OS 4.0.5-20260507，可以使用 `cat /proc/version` 命令确认，如下图所示，如版本不匹配，请更新最新版本。
+3. 保证系统镜像版本 = RDK OS 4.0.5-20260507，可以使用 `cat /proc/version` 命令确认。
 
-   <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-proc-version.png" alt="RDK S100 系统镜像版本" width="80%" /><br/>
+   ```shell
+   root@ubuntu:~# cat /proc/version
+   ```
 
 4. 将以下补丁包下载到 RDK S100 系统中。
 
@@ -107,9 +109,11 @@ import VersionNavIcon, { VersionJumpLink } from '@site/src/components/VersionNav
 
    <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/dip-switch-i2s-101x.png" alt="拨码开关 101X" width="30%" /><br/>
 
-3. 保证系统镜像版本 = RDK OS 4.1.0，可以使用 `cat /proc/version` 命令确认，如下图所示，如版本不匹配，请更新最新版本。
+3. 保证系统镜像版本 = RDK OS 4.1.0，可以使用 `cat /proc/version` 命令确认。
 
-   <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-proc-4.1.0.png" alt="RDK S100 系统镜像版本" width="80%" /><br/>
+   ```shell
+   root@ubuntu:~# cat /proc/version
+   ```
 
 4. 输入 `srpi-config`，依次点击 **3 Interface Options** > **I5 Audio** > **Waveshare_hat_v2**，按下回车，然后选择 `<Finish>`，根据指引选择重启，或者自行输入命令 `sudo reboot` 使所有配置生效。
 

@@ -67,9 +67,11 @@ import VersionNavIcon, { VersionJumpLink } from '@site/src/components/VersionNav
 
    <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/dip-switch-i2s-101x.png" alt="DIP switch 101X" width="30%" /><br/>
 
-3. Make sure the system image version is RDK OS 4.0.5-20260507. You can confirm it by running the `cat /proc/version` command, as shown below. If the version does not match, please update to the latest version.
+3. Make sure the system image version is RDK OS 4.0.5-20260507. You can confirm it by running the `cat /proc/version` command.
 
-   <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-proc-version.png" alt="RDK S100 system image version" width="80%" /><br/>
+   ```shell
+   root@ubuntu:~# cat /proc/version
+   ```
 
 4. Download the following patch packages to the RDK S100 system.
 
@@ -107,9 +109,11 @@ import VersionNavIcon, { VersionJumpLink } from '@site/src/components/VersionNav
 
    <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/dip-switch-i2s-101x.png" alt="DIP switch 101X" width="30%" /><br/>
 
-3. Make sure the system image version is RDK OS 4.1.0. You can confirm it by running the `cat /proc/version` command, as shown below. If the version does not match, please update to the latest version.
+3. Make sure the system image version is RDK OS 4.1.0. You can confirm it by running the `cat /proc/version` command.
 
-   <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-proc-4.1.0.png" alt="RDK S100 system image version" width="80%" /><br/>
+   ```shell
+   root@ubuntu:~# cat /proc/version
+   ```
 
 4. Run `srpi-config` and select **3 Interface Options** > **I5 Audio** > **Waveshare_hat_v2**, press Enter, then select `<Finish>`. Reboot as prompted, or run `sudo reboot` yourself to apply all settings.
 
