@@ -160,7 +160,7 @@ This interface is a 4-channel DIP switch used to select the audio interface, cha
 | 3 | I2S level selection | 0: 1.8V<br/>1: 3.3V |
 | 4 | N/A |  |
 
-### Connector models
+## Connector models
 
 | Connector | Connector Model | Manufacturer |
 | --- | --- | --- |
