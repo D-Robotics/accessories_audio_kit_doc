@@ -10,6 +10,8 @@ sidebar_position: 3
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+import VersionNavIcon, { VersionJumpLink } from '@site/src/components/VersionNavIcon';
 ```
 
 ## Hardware and software configuration
@@ -48,6 +50,15 @@ import TabItem from '@theme/TabItem';
 
 <TabItem value="RDK S100/S100P">
 
+<Admonition type="tip" title="Version navigation" icon={<VersionNavIcon />}>
+  <div className="version-jump-links">
+    <VersionJumpLink href="#s100-rdk-os-405">RDK OS 4.0.5 hardware and software configuration</VersionJumpLink>
+    <VersionJumpLink href="#s100-rdk-os-410">RDK OS 4.1.0 hardware and software configuration</VersionJumpLink>
+  </div>
+</Admonition>
+
+### RDK OS 4.0.5 hardware and software configuration {#s100-rdk-os-405}
+
 1. On the RDK S100/S100P, `PCM0` is connected to the Wi-Fi & BT module by default for Bluetooth audio. To use the RDK Audio Kit, set the `PCM0` function switch to `OFF` to route the `PCM0`-related pins to the 40PIN header.
 
    <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-pcm0-function-switch.jpeg" alt="RDK S100/S100P PCM0 function switch" width="80%" /><br/>
@@ -56,9 +67,11 @@ import TabItem from '@theme/TabItem';
 
    <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/dip-switch-i2s-101x.png" alt="DIP switch 101X" width="30%" /><br/>
 
-3. Make sure the system image version is RDK OS 4.0.5-20260507. You can confirm it by running the `cat /proc/version` command, as shown below. If the version does not match, please update to the latest version.
+3. Make sure the system image version is RDK OS 4.0.5-20260507. You can confirm it by running the `cat /proc/version` command.
 
-   <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-proc-version.png" alt="RDK S100 system image version" width="80%" /><br/>
+   ```shell
+   root@ubuntu:~# cat /proc/version
+   ```
 
 4. Download the following patch packages to the RDK S100 system.
 
@@ -83,6 +96,34 @@ import TabItem from '@theme/TabItem';
    <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-asound-cards.png" alt="RDK S100 ALSA sound card information" width="80%" /><br/>
 
 8. Run `ls -l /dev/snd` to list the recording and playback nodes. `pcmC0D0c` is the recording node of PCM channel 0 device 0, and `pcmC0D1p` is the playback node of PCM channel 0 device 1, and so on. These two nodes correspond to the RDK Audio Kit on the RDK S100.
+
+   <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-dev-snd.png" alt="RDK S100 /dev/snd nodes" width="80%" /><br/>
+
+### RDK OS 4.1.0 hardware and software configuration {#s100-rdk-os-410}
+
+1. On the RDK S100/S100P, `PCM0` is connected to the Wi-Fi & BT module by default for Bluetooth audio. To use the RDK Audio Kit, set the `PCM0` function switch to `OFF` to route the `PCM0`-related pins to the 40PIN header.
+
+   <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-pcm0-function-switch.jpeg" alt="RDK S100/S100P PCM0 function switch" width="80%" /><br/>
+
+2. Set the DIP switch of the RDK Audio Kit as follows (`101X`). In this state, the mode is set to I2S, the number of I2S channels is 1, and the I2S reference level is 3V3.
+
+   <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/dip-switch-i2s-101x.png" alt="DIP switch 101X" width="30%" /><br/>
+
+3. Make sure the system image version is RDK OS 4.1.0. You can confirm it by running the `cat /proc/version` command.
+
+   ```shell
+   root@ubuntu:~# cat /proc/version
+   ```
+
+4. Run `srpi-config` and select **3 Interface Options** > **I5 Audio** > **Waveshare_hat_v2**, press Enter, then select `<Finish>`. Reboot as prompted, or run `sudo reboot` yourself to apply all settings.
+
+   <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-srpi-config-audio-hat-v2.gif" alt="Configure the RDK S100 audio driver with srpi-config" width="80%" /><br/>
+
+5. Run `cat /proc/asound/cards` to list all sound cards detected by ALSA. `s100snd2` is the sound card of the RDK Audio Kit, which means the configuration is effective.
+
+   <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-asound-cards.png" alt="RDK S100 ALSA sound card information" width="80%" /><br/>
+
+6. Run `ls -l /dev/snd` to list the recording and playback nodes. `pcmC0D0c` is the recording node of PCM channel 0 device 0, and `pcmC0D1p` is the playback node of PCM channel 0 device 1, and so on. These two nodes correspond to the RDK Audio Kit on the RDK S100.
 
    <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-dev-snd.png" alt="RDK S100 /dev/snd nodes" width="80%" /><br/>
 
@@ -160,7 +201,11 @@ import TabItem from '@theme/TabItem';
 
 ## Feature walkthrough
 
-This section uses the RDK X5 + RDK Audio Kit as an example to demonstrate how to record multi-channel audio with the `arecord` tool, play back multi-channel audio with the `aplay` tool, and perform full-duplex recording and playback.
+:::tip Tip
+
+This section uses the **RDK X5 + RDK Audio Kit** as an example to demonstrate how to record multi-channel audio with the `arecord` tool, play back multi-channel audio with the `aplay` tool, and perform full-duplex recording and playback.
+
+:::
 
 ### Record multi-channel audio
 

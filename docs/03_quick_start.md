@@ -10,6 +10,8 @@ sidebar_position: 3
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+import VersionNavIcon, { VersionJumpLink } from '@site/src/components/VersionNavIcon';
 ```
 
 ## 软硬件配置
@@ -48,6 +50,15 @@ import TabItem from '@theme/TabItem';
 
 <TabItem value="RDK S100/S100P">
 
+<Admonition type="tip" title="版本导航" icon={<VersionNavIcon />}>
+  <div className="version-jump-links">
+    <VersionJumpLink href="#s100-rdk-os-405">RDK OS 4.0.5 软硬件配置</VersionJumpLink>
+    <VersionJumpLink href="#s100-rdk-os-410">RDK OS 4.1.0 软硬件配置</VersionJumpLink>
+  </div>
+</Admonition>
+
+### RDK OS 4.0.5 软硬件配置 {#s100-rdk-os-405}
+
 1. RDK S100/S100P 的 `PCM0` 默认接入 Wi-Fi & BT 模块，用于蓝牙音频功能，为使用 RDK 音频套件，需要将 `PCM0` 功能切换开关拨到 `OFF`，以将 `PCM0` 相关引脚接入 40PIN 引脚。
 
    <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-pcm0-function-switch.jpeg" alt="RDK S100/S100P PCM0 功能切换开关" width="80%" /><br/>
@@ -56,9 +67,11 @@ import TabItem from '@theme/TabItem';
 
    <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/dip-switch-i2s-101x.png" alt="拨码开关 101X" width="30%" /><br/>
 
-3. 保证系统镜像版本 = RDK OS 4.0.5-20260507，可以使用 `cat /proc/version` 命令确认，如下图所示，如版本不匹配，请更新最新版本。
+3. 保证系统镜像版本 = RDK OS 4.0.5-20260507，可以使用 `cat /proc/version` 命令确认。
 
-   <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-proc-version.png" alt="RDK S100 系统镜像版本" width="80%" /><br/>
+   ```shell
+   root@ubuntu:~# cat /proc/version
+   ```
 
 4. 将以下补丁包下载到 RDK S100 系统中。
 
@@ -83,6 +96,34 @@ import TabItem from '@theme/TabItem';
    <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-asound-cards.png" alt="RDK S100 ALSA 声卡信息" width="80%" /><br/>
 
 8. 输入 `ls -l /dev/snd` 可以查看录音与播放节点，其中 `pcmC0D0c` 表示 PCM 通道 0 设备 0 的录制节点，`pcmC0D1p` 表示 PCM 通道 0 设备 1 的播放节点，以此类推，这两个节点就是 RDK S100 上 RDK 音频套件的对应节点。
+
+   <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-dev-snd.png" alt="RDK S100 /dev/snd 节点" width="80%" /><br/>
+
+### RDK OS 4.1.0 软硬件配置 {#s100-rdk-os-410}
+
+1. RDK S100/S100P 的 `PCM0` 默认接入 Wi-Fi & BT 模块，用于蓝牙音频功能，为使用 RDK 音频套件，需要将 `PCM0` 功能切换开关拨到 `OFF`，以将 `PCM0` 相关引脚接入 40PIN 引脚。
+
+   <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-pcm0-function-switch.jpeg" alt="RDK S100/S100P PCM0 功能切换开关" width="80%" /><br/>
+
+2. 将 RDK 音频套件的拨码开关设置如下（`101X`），该状态设置模式为 I2S，I2S 通道数为 1，I2S 参考电平为 3V3。
+
+   <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/dip-switch-i2s-101x.png" alt="拨码开关 101X" width="30%" /><br/>
+
+3. 保证系统镜像版本 = RDK OS 4.1.0，可以使用 `cat /proc/version` 命令确认。
+
+   ```shell
+   root@ubuntu:~# cat /proc/version
+   ```
+
+4. 输入 `srpi-config`，依次点击 **3 Interface Options** > **I5 Audio** > **Waveshare_hat_v2**，按下回车，然后选择 `<Finish>`，根据指引选择重启，或者自行输入命令 `sudo reboot` 使所有配置生效。
+
+   <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-srpi-config-audio-hat-v2.gif" alt="srpi-config 配置 RDK S100 音频驱动" width="80%" /><br/>
+
+5. 输入 `cat /proc/asound/cards` 查看 ALSA 检测到的所有声卡信息，其中 `s100snd2` 是 RDK 音频套件的声卡，配置有效。
+
+   <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-asound-cards.png" alt="RDK S100 ALSA 声卡信息" width="80%" /><br/>
+
+6. 输入 `ls -l /dev/snd` 可以查看录音与播放节点，其中 `pcmC0D0c` 表示 PCM 通道 0 设备 0 的录制节点，`pcmC0D1p` 表示 PCM 通道 0 设备 1 的播放节点，以此类推，这两个节点就是 RDK S100 上 RDK 音频套件的对应节点。
 
    <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/s100-dev-snd.png" alt="RDK S100 /dev/snd 节点" width="80%" /><br/>
 
@@ -161,7 +202,11 @@ import TabItem from '@theme/TabItem';
 
 ## 功能体验
 
-本处以 RDK X5 + RDK 音频套件为例，展示如何使用 `arecord` 工具录制多通道音频、使用 `aplay` 工具播放多声道音频、全双工录制播放。
+:::tip 提示
+
+本处以 **RDK X5 + RDK 音频套件** 为例，展示如何使用 `arecord` 工具录制多通道音频、使用 `aplay` 工具播放多声道音频、全双工录制播放。
+
+:::
 
 ### 录制多通道音频
 
