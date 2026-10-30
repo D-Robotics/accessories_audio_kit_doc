@@ -6,7 +6,7 @@
  * Optional: ALGOLIA_APP_ID, ALGOLIA_INDEX_NAME, ALGOLIA_SITE_URL, ALGOLIA_SEARCH_API_KEY
  */
 import { createHash } from "node:crypto";
-import { existsSync } from "node:fs";
+import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import * as cheerio from "cheerio";
@@ -35,6 +35,9 @@ const SEARCH_API_KEY = (
 const MAX_PAGES = Number(process.env.ALGOLIA_MAX_PAGES || 500);
 const FETCH_CONCURRENCY = Number(process.env.ALGOLIA_FETCH_CONCURRENCY || 4);
 const BATCH_SIZE = 1000;
+
+/** 站点默认语言；MCP 只读中文索引，英文页面不写入 search-index.json。 */
+const DEFAULT_LOCALE = "zh-Hans";
 
 const LEVEL_WEIGHT = {
   lvl0: 100,
@@ -540,6 +543,146 @@ async function verifySearch() {
   }
 }
 
+function normalizeText(value) {
+  return String(value || "")
+    .replace(/\u00a0/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function relativePathFromUrl(url) {
+  try {
+    return new URL(url).pathname;
+  } catch {
+    return url;
+  }
+}
+
+function deepestHeadingText(hierarchy) {
+  for (const lvl of ["lvl6", "lvl5", "lvl4", "lvl3", "lvl2", "lvl1"]) {
+    const text = normalizeText(hierarchy?.[lvl]);
+    if (text) {
+      return text;
+    }
+  }
+  return "";
+}
+
+/**
+ * 把 Algolia DocSearch records 映射成 easyops `search-index.json` 同构格式（5 shard），
+ * 供 rdk-docs-mcp 读取。MCP 的 compactDocusaurusIndex 只读 t/s/u/b/h。
+ *
+ * shard 语义：
+ *   shard0 = 页面级 {t,u,b}；shard1 = 标题级 {t,u,h,p}；shard2 = 页内短摘要 {t,s,u,p}；
+ *   shard3 = 空；shard4 = 正文摘要 {t,s,u,h,p}。
+ *
+ * 仅产出中文（MCP 的 catalog 每站只指向一个 zh indexPath，不读 /en/）。
+ */
+function buildEasyopsIndex(records) {
+  const zh = records.filter(
+    (r) => r.language === DEFAULT_LOCALE || r.language === "zh-Hans",
+  );
+  const byPage = new Map();
+  for (const r of zh) {
+    const key = r.url_without_anchor;
+    if (!byPage.has(key)) {
+      byPage.set(key, []);
+    }
+    byPage.get(key).push(r);
+  }
+
+  const pages = [];
+  const headings = [];
+  const pageSnippets = [];
+  const contentSnippets = [];
+  let id = 0;
+  let pageSeq = 0;
+
+  for (const [url, recs] of byPage) {
+    pageSeq += 1;
+    const u = relativePathFromUrl(url);
+
+    let pageTitle = "";
+    for (const r of recs) {
+      if (r.type === "lvl1" && r.hierarchy?.lvl1) {
+        pageTitle = normalizeText(r.hierarchy.lvl1);
+        break;
+      }
+    }
+    const breadcrumbs = (recs[0]?.hierarchy?.lvl0 || "")
+      .split(" / ")
+      .map((s) => normalizeText(s))
+      .filter(Boolean);
+    if (!pageTitle) {
+      pageTitle = breadcrumbs[breadcrumbs.length - 1] || "";
+    }
+    pages.push({ i: ++id, t: pageTitle, u, b: breadcrumbs });
+
+    let firstHeading = "";
+    for (const r of recs) {
+      if (
+        r.type &&
+        r.type.startsWith("lvl") &&
+        r.type !== "lvl1" &&
+        r.hierarchy?.[r.type]
+      ) {
+        firstHeading = normalizeText(r.hierarchy[r.type]);
+        break;
+      }
+    }
+    if (firstHeading) {
+      pageSnippets.push({ i: ++id, t: firstHeading, s: pageTitle, u, p: pageSeq });
+    }
+
+    for (const r of recs) {
+      const type = r.type;
+      if (type && type.startsWith("lvl") && type !== "lvl1") {
+        if (r.anchor) {
+          headings.push({
+            i: ++id,
+            t: normalizeText(r.hierarchy?.[type]),
+            u,
+            h: `#${r.anchor}`,
+            p: pageSeq,
+          });
+        }
+      } else if (type === "content" && r.content) {
+        const doc = { i: ++id, t: normalizeText(r.content), u, p: pageSeq };
+        const source = deepestHeadingText(r.hierarchy);
+        if (source) {
+          doc.s = source;
+        }
+        if (r.anchor) {
+          doc.h = `#${r.anchor}`;
+        }
+        contentSnippets.push(doc);
+      }
+    }
+  }
+
+  return [
+    { documents: pages },
+    { documents: headings },
+    { documents: pageSnippets },
+    { documents: [] },
+    { documents: contentSnippets },
+  ];
+}
+
+/** 写出 MCP 读取的本地索引文件；由 workflow 上传到 OSS 站点根目录。 */
+function writeEasyopsIndex(records) {
+  const dir = path.join(rootDir, "scripts/_algolia_tmp");
+  const file = path.join(dir, "search-index.json");
+  const shards = buildEasyopsIndex(records);
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(file, JSON.stringify(shards));
+  console.log(
+    `[algolia-index] Wrote search-index.json: pages=${shards[0].documents.length} ` +
+      `headings=${shards[1].documents.length} snippets=${shards[4].documents.length} -> ${file}`,
+  );
+  return shards;
+}
+
 async function main() {
   assertConfig();
   if (!existsSync(path.join(rootDir, "package.json"))) {
@@ -565,6 +708,10 @@ async function main() {
   if (!records.length) {
     throw new Error("No records extracted; aborting without clearing index");
   }
+
+  // 一爬两出：同一批 records 既推 Algolia，也产一份 MCP 读取的本地索引。
+  // 先写文件，Algolia 上传失败时仍可人工上传索引。
+  writeEasyopsIndex(records);
 
   await ensureIndexSettings();
   await clearIndex();
