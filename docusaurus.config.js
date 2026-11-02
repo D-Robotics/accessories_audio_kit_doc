@@ -19,7 +19,10 @@ const resolvedBaseUrl =
 const resolvedSiteUrl = process.env.DOCS_SITE_URL?.trim() || "http://localhost:3000";
 const buildProduct = process.env.DOC_BUILD_PRODUCT?.trim() || "";
 const buildVersion = process.env.DOC_BUILD_VERSION?.trim() || "";
-const COPYRIGHT_START_YEAR = 2024;
+// 英文站静态资源挂在 /en/ 子路径下，埋点脚本 src 需带 locale 前缀，否则英文站 404
+const localePrefix = process.env.DOCUSAURUS_CURRENT_LOCALE === "en" ? "/en" : "";
+
+const COPYRIGHT_START_YEAR = 2026;
 const currentYear = new Date().getFullYear();
 const copyrightYearLabel =
   currentYear > COPYRIGHT_START_YEAR
@@ -28,7 +31,10 @@ const copyrightYearLabel =
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "RDK Audio Kit DOC",
+  title:
+    process.env.DOCUSAURUS_CURRENT_LOCALE === "en"
+      ? "RDK Audio Kit User Manual"
+      : "RDK 音频套件用户手册",
   // tagline: 'Dinosaurs are cool',
   favicon: "img/logo.png",
   // trailingSlash: false,
@@ -83,6 +89,10 @@ const config = {
     {
       src: "https://hm.baidu.com/hm.js?24dd63cad43b63889ea6bede5fd1ab9e",
       async: true,
+    },
+    {
+      src: `/accessories_audio_kit_doc${localePrefix}/js/umami-events.js`,
+      defer: true,
     },
     // Dify 小助手暂时关闭：仅加载配置脚本；embed.min.js 在 body 就绪后由 dify-config.js 动态注入
     // {
@@ -190,7 +200,7 @@ const config = {
       navbar: {
         title: "D-Robotics",
         logo: {
-          alt: "地瓜机器人 logo",
+          alt: "地瓜 logo",
           src: "img/logo.png",
           // href: "https://d-robotics.cc/", // 修改为文档根路径
         },
@@ -259,9 +269,9 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
       algolia: {
-        appId: "1VU781LYTV",
-        apiKey: "fb65c6e54a52ce6fba0645bd2630e79b",
-        indexName: "accessories_audio_kit_doc",
+        appId: process.env.ALGOLIA_APP_ID || "1VU781LYTV",
+        apiKey: process.env.ALGOLIA_SEARCH_API_KEY || "fb65c6e54a52ce6fba0645bd2630e79b",
+        indexName: process.env.ALGOLIA_INDEX_NAME || "accessories_audio_kit_doc",
         contextualSearch: true,
         searchPagePath: "search",
       },

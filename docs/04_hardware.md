@@ -1,9 +1,11 @@
 ---
+title: 硬件说明
+description: 说明各板卡的结构安装方式，以及各硬件接口的引脚定义与线序。
 sidebar_position: 4
 ---
 
 
-# 4. 硬件说明
+# 硬件说明
 
 ## 结构安装说明
 
@@ -15,7 +17,7 @@ sidebar_position: 4
 
 ### RDK 音频拓展板接口
 
-边缘留有 1 个金属化孔，可使用 1×M2.5 螺栓将板卡固定，配合 40PIN 接口紧固安装。
+边缘留有 1 个金属化孔，可使用 1 × M2.5 螺栓将板卡固定，配合 40PIN 接口紧固安装。
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/structure-mount-adapter-board.png" alt="RDK 音频拓展板接口结构安装" width="60%" />
 
@@ -25,7 +27,7 @@ sidebar_position: 4
 
 <img src="https://rdk-doc.oss-cn-beijing.aliyuncs.com/doc/img/accessories/04_audio_kit/structure-mount-4mic-array.png" alt="RDK 音频拓展板 4-Mic 阵列结构安装" width="60%" />
 
-### RDK 音频拓展版 6-Mic 阵列
+### RDK 音频拓展板 6-Mic 阵列
 
 留有 3 个金属化孔，可使用 3 × M6 螺栓将板卡固定。
 
@@ -35,7 +37,7 @@ sidebar_position: 4
 :::info 说明
 - 安装时，建议合理使用垫圈，并交替锁紧螺栓，避免产品 PCB 板发生断裂以造成产品损坏。
 - 如需将麦克风阵列或扬声器安装至密封结构内，需用户根据实际情况自行设计导音结构，避免影响产品录音或播放质量。
-- 3D 模型文件详见 [资料下载](./06_downloads.md)。
+- 3D 模型文件详见 [资料下载](./05_downloads.md)。
 :::
 
 ## 硬件接口说明
@@ -92,7 +94,7 @@ sidebar_position: 4
 :::
 #### J11 麦克风阵列接口
 
-该接口用于连接 RDK 音频核心板与 RDK 4 麦阵列或 6 麦阵列。
+该接口用于连接 RDK 音频核心板与 RDK 4-Mic 阵列或 6-Mic 阵列。
 
 连接器 PIN1 位置靠近 Mark 点（最右侧），线序如下表所示：
 
@@ -139,7 +141,7 @@ sidebar_position: 4
 
 #### K1 RST 按键
 
-该接口用于 Reset 音频套件状态，正常使用过程中应避免使用。
+该接口用于复位音频套件状态，正常使用过程中应避免使用。
 
 #### K2 LOAD 按键
 

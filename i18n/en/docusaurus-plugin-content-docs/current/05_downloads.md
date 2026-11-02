@@ -1,9 +1,11 @@
 ---
+title: Downloads
+description: Provides 3D model files for the expansion board, adapter, and mic arrays.
 sidebar_position: 5
 ---
 
 
-# 5. Downloads
+# Downloads
 
 | Name | Download Link |
 | --- | --- |
