@@ -57,7 +57,7 @@ const config = {
           },
 
           feedbackFloat: {
-            enabled: true,
+            enabled: false,
                 questionnaireUrl: "https://horizonrobotics.feishu.cn/share/base/form/shrcnLQ9OfYQO03cebdkNfOmkCh",
                 questionnaireUrlByLocale: {
                   "zh-Hans": "https://horizonrobotics.feishu.cn/share/base/form/shrcnLQ9OfYQO03cebdkNfOmkCh",
@@ -160,7 +160,7 @@ const config = {
       }),
     ],
   ],
-  plugins: [
+  plugins: ['@d-robotics/docusaurus-plugin-guaji',
     require.resolve("./src/plugins/sidebar-scope-config-plugin"),
     [
       "docusaurus-plugin-copy-page-button",
